@@ -99,7 +99,7 @@ Goal: The primary goal of the project is to predict the textual counterpart of a
 
   %-------------------------------------------------------------------------
   \section{Possible Methodology}
-We are planning to work on Jupyter notebook and google collab throughout our project. We will be using Github for collaboration and version controlling of our project. We plan to clean and pre-process the raw dataset by removing redundant images and making sure that the dataset is completely balanced.The three architectures that we will be using are: Mobile-Net v3, Shufflenet, and NASNet-A-Mobile. Mobile-Net-v3 is a convulation neural network that is said to perform well for mobile devices. We are using Mobile-Net v3 to reduce the training time of the images significantly. Shuffle Net is yet another architecture that performs well for mobile devices. One added advantage here is that Shuffle Net has limited computation power without compromising the accuracy. With fewer floating-point operations and parameters than comparable architectures, NASNets achieve cutting-edge performances. We would we using optimization algorithms such as AdaDelta and Adam. Although both the optimization algorithm are computationally expensive, we believe that they will might significantly improve the learning rate of the model. Apart from using optimization algorithms, we would use n-ply cross validation to obtain reliable results and avoid overfitting. To evaluate how well our model performs, we would be using different evaluation metrics such as precision, recall, accuracy and f1 score.
+We are planning to work on Jupyter notebook and google collab throughout our project. We will be using Github for collaboration and version controlling of our project. We plan to clean and pre-process the raw dataset by removing redundant images and making sure that the dataset is completely balanced.The three architectures that we will be using are: Mobile-Net v3, Shufflenet, and ResNet. Mobile-Net-v3 is a convulation neural network that is said to perform well for mobile devices. We are using Mobile-Net v3 to reduce the training time of the images significantly. Shuffle Net is yet another architecture that performs well for mobile devices. One added advantage here is that Shuffle Net has limited computation power without compromising the accuracy. ResNet is usually recommended for image classification problems. Te architecture has many layers because of which it can accurately represent features, thus increasing its classification powers. We would we using optimization algorithms such as AdaDelta and Adam. Although both the optimization algorithm are computationally expensive, we believe that they will might significantly improve the learning rate of the model. Apart from using optimization algorithms, we would use n-ply cross validation to obtain reliable results and avoid overfitting. To evaluate how well our model performs, we would be using different evaluation metrics such as precision, recall, accuracy and f1 score.
 
 \pagebreak
 
@@ -128,5 +128,8 @@ We are planning to work on Jupyter notebook and google collab throughout our pro
   \bibliographystyle{ieee_fullname}
   \bibliography{egbib}
   }
+  https://www.mindspore.cn/tutorial/training/en/r1.1/advanced_use/cv_resnet50.html
+  https://towardsdatascience.com/5-most-well-known-cnn-architectures-visualized-af76f1f0065e
+  
 
   \end{document}
