@@ -14,6 +14,8 @@
   \usepackage{amsmath}
   \usepackage{amssymb}
   \usepackage{booktabs}
+  \usepackage{graphicx}
+\graphicspath{ {.} }
 
 
   % It is strongly recommended to use hyperref, especially for the review version.
@@ -41,7 +43,7 @@
   %%%%%%%%% TITLE - PLEASE UPDATE
   \title{\LaTeX\ Author Guidelines for \confName~Proceedings}
 
-  \author{First Author\\
+  \author{First Author\\ asdfds
   Institution1\\
   Institution1 address\\
   {\tt\small firstauthor@i1.org}
@@ -50,11 +52,11 @@
   % Additional authors and addresses can be added with ``\and'',
   % just like the second author.
   % To save space, use either the email address or home page, not both
-  \and
-  Second Author\\
-  Institution2\\
-  First line of institution2 address\\
-  {\tt\small secondauthor@i2.org}
+  % \and
+  % Second Author\\
+  % Institution2\\
+  % First line of institution2 address\\
+  % {\tt\small secondauthor@i2.org}
   }
   \maketitle
 
@@ -63,53 +65,51 @@
   \section{Introduction}
   \label{sec:intro}
 
-Sign language is the most important way for the deaf/ people who are hard of hearing to communicate with each other. The problem faced is to identify the twenty-six characters of the English alphabet, the white space and the empty space. The most probable challenges that will be faced will be the correct classification of similar looking alphabets. By using Convolutional Neural Networks (CNN), we are trying to correctly classify the image as a character. For the purpose of diversifying the results we will be using the Mobile-Net v3, Shufflenet and NASNet-A-Mobile neural network to model three different datasets and then later train two models by making use of Transfer Learning.
-Application: The conversion of sign language to text can prove to be quite helpful to not only the deaf people but also to others who do not understand the language. Furthermore, it will save costs of employing an intermediary for conversation between a person who uses sign language user and one who does not. It will also lead to better documentation, as saving long videos can be quite memory inefficient but saving the conversations in the form of text can be quite helpful.
-Goal: The primary goal of the project is to predict the textual counterpart of a sign language image with high accuracy. In the end we will evaluate the accuracy using confusion matrix by comparing the results for each of the characters.
+Sign language is the most important way for the deaf to communicate. The problem faced is to identify the twenty-six characters of the English alphabet and the white space. The most probable challenges that will be faced will be the correct classification of similar looking alphabets. By using CNN, we are trying to correctly classify the image as a character. For the purpose of diversifying the results we will be using the Mobile-Net-v3, ShuffleNet and ResNet-18 neural network to model three different datasets and then later train two models by making use of Transfer Learning.
+\par
+{\bfseries Application}: The conversion of sign language to text can prove to be quite helpful to not only the deaf people but also to others who do not understand the language. Furthermore, it will save costs of employing an intermediary for conversation between speakers and non speakers. It will also lead to better documentation, as saving long videos can be quite memory inefficient but saving the conversations in the form of text can be quite helpful.
+\par
+{\bfseries Goal} : The primary goal of the project is to predict the textual counterpart of a sign language image with high accuracy. In the end we will evaluate the accuracy using confusion matrix by comparing the results for each of the characters.
 
 
   %------------------------------------------------------------------------
-  \section{Datasets Selection}
+  \section{Image Dataset Selection}
   \label{sec:formatting}
-
-  All text must be in a two-column format.
-  The total allowable size of the text area is $6\frac78$ inches (17.46 cm) wide by $8\frac78$ inches (22.54 cm) high.
-  Columns are to be $3\frac14$ inches (8.25 cm) wide, with a $\frac{5}{16}$ inch (0.8 cm) space between them.
-  The main title (on the first page) should begin 1 inch (2.54 cm) from the top edge of the page.
-  The second and following pages should begin 1 inch (2.54 cm) from the top edge.
-  On all pages, the bottom margin should be $1\frac{1}{8}$ inches (2.86 cm) from the bottom edge of the page for $8.5 \times 11$-inch paper;
-  for A4 paper, approximately $1\frac{5}{8}$ inches (4.13 cm) from the bottom edge of the
-  page.
+The American sign language has a diverse range of data across the web. For our usecase, we have selected 3 datasets which are suitable based on the number of classes and how skewed are the datasets and also based on the size of images which would be a factor during preprocessing of this data. The first dataset is provided by NIDCD, which is an gov. institution, this dataset would be trimmed to use only 3 classes out of 29. The second dataset has 28 classes, but the number of images are higher i.e 160k these would be systematically reduced to less 50k using random sampling. The model would be trained for all the classes for the second dataset.
+The third dataset being used is the one provided by the paper \textbf{Spelling It Out}  paper which has about 132k images and 24 classes from 5 different individuals providing variety to the dataset. This dataset shall also be trimmed to less than 50k images divided equally among all the classes.
 
   \begin{table}
     \centering
-    \begin{tabular}{@{}lc@{}}
+    \begin{tabular}{l l l l}
       \toprule
-      Method & Frobnability \\
+      Parameters & Dataset 1 & Dataset 2 & Dataset 3\\
       \midrule
-      Theirs & Frumpy \\
-      Yours & Frobbly \\
-      Ours & Makes one's heart Frob\\
+      Classes & 3 & 28 & 24\\
+      Images & 87k & 166k & 132k \\
+      Image Size & 200x200  & 400x400 & variable\\
+      Format & .jpg & .jpg & .jpg \\
+      Link & \href{https://www.kaggle.com/datasets/grassknoted/asl-alphabet}{Link} & \href{https://www.kaggle.com/datasets/kapillondhe/american-sign-language}{Link} & \href{https://www.kaggle.com/datasets/mrgeislinger/asl-rgb-depth-fingerspelling-spelling-it-out}{Link}\\
       \bottomrule
     \end{tabular}
-    \caption{Results.   Ours is better.}
+    \caption{Datasets}
     \label{tab:example}
   \end{table}
 
 
   %-------------------------------------------------------------------------
   \section{Possible Methodology}
-We are planning to work on Jupyter notebook and google collab throughout our project. We will be using Github for collaboration and version controlling of our project. We plan to clean and pre-process the raw dataset by removing redundant images and making sure that the dataset is completely balanced.The three architectures that we will be using are: Mobile-Net v3, Shufflenet, and ResNet. Mobile-Net-v3 is a convulation neural network that is said to perform well for mobile devices. We are using Mobile-Net v3 to reduce the training time of the images significantly. Shuffle Net is yet another architecture that performs well for mobile devices. One added advantage here is that Shuffle Net has limited computation power without compromising the accuracy. ResNet is usually recommended for image classification problems. Te architecture has many layers because of which it can accurately represent features, thus increasing its classification powers. We would we using optimization algorithms such as AdaDelta and Adam. Although both the optimization algorithm are computationally expensive, we believe that they will might significantly improve the learning rate of the model. Apart from using optimization algorithms, we would use n-ply cross validation to obtain reliable results and avoid overfitting. To evaluate how well our model performs, we would be using different evaluation metrics such as precision, recall, accuracy and f1 score.
+We are planning to work on Google Collab throughout our project and use Github for collaboration and version control our project. We plan to clean and pre-process the raw dataset by removing redundant images and making sure that the dataset is completely balanced.The three architectures that we will be using are: \textbf{Mobile-Net-v3, ShuffleNet, and ResNet-18}. Mobile-Net-v3 is a Convolution Neural Network(CNN) that is said to perform well for mobile devices. We are using Mobile-Net-v3 to reduce the training time of the images significantly since the number of parameters to be trained are low. ShuffleNet is yet another architecture that performs well for mobile devices. One added advantage here is that ShuffleNet has limited computation power without compromising the accuracy ResNet-18 is usually recommended for image classification problems. The architecture has many layers because of which it can accurately represent features, thus increasing its classification powers. We would we using optimization algorithms such as AdaDelta and Adam. Although both the optimization algorithm are computationally expensive, we believe that they will might significantly improve the learning rate of the model. Apart from using optimization algorithms, we would use k cross validation to obtain reliable results and avoid overfitting. To evaluate how well our model performs, we would be using different evaluation metrics such as precision, recall and f1 score.
 
 \pagebreak
 
   %-------------------------------------------------------------------------
   \section{Gantt Chart}
 
-  
+  \includegraphics[scale=0.5]{{gantt.jpg}}
 
+\pagebreak
   %-------------------------------------------------------------------------
-  \subsection{References}
+  \section{References}
 
   List and number all bibliographical references in 9-point Times, single-spaced, at the end of your paper.
   When referenced in the text, enclose the citation number in square brackets, for
@@ -128,8 +128,5 @@ We are planning to work on Jupyter notebook and google collab throughout our pro
   \bibliographystyle{ieee_fullname}
   \bibliography{egbib}
   }
-  https://www.mindspore.cn/tutorial/training/en/r1.1/advanced_use/cv_resnet50.html
-  https://towardsdatascience.com/5-most-well-known-cnn-architectures-visualized-af76f1f0065e
-  
 
   \end{document}
