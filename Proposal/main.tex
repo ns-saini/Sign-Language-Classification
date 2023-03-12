@@ -6,8 +6,8 @@
 
   %%%%%%%%% PAPER TYPE  - PLEASE UPDATE FOR FINAL VERSION
   \usepackage[review]{cvpr}      % To produce the REVIEW version
-  %\usepackage{cvpr}              % To produce the CAMERA-READY version
-  %\usepackage[pagenumbers]{cvpr} % To force page numbers, e.g. for an arXiv version
+  % \usepackage{cvpr}              % To produce the CAMERA-READY version
+  \usepackage[pagenumbers]{cvpr} % To force page numbers, e.g. for an arXiv version
 
   % Include other packages here, before hyperref.
   \usepackage{graphicx}
@@ -17,7 +17,7 @@
   \usepackage{graphicx}
   \usepackage{url}
   \usepackage{hyperref}
-\graphicspath{ {.} }
+  \graphicspath{ {.} }
 
 
   % It is strongly recommended to use hyperref, especially for the review version.
@@ -31,7 +31,7 @@
   %  should be clear).
   \usepackage[pagebackref,breaklinks,colorlinks]{hyperref}
 
-
+\def\cvprPaperID{Group E}
   % Support for easy cross-referencing
   \usepackage[capitalize]{cleveref}
   \crefname{section}{Sec.}{Secs.}
@@ -43,23 +43,8 @@
   \begin{document}
 
   %%%%%%%%% TITLE - PLEASE UPDATE
-  \title{\LaTeX\ Author Guidelines for \confName~Proceedings}
-
-  \author{First Author\\ asdfds
-  Institution1\\
-  Institution1 address\\
-  {\tt\small firstauthor@i1.org}
-  % For a paper whose authors are all at the same institution,
-  % omit the following lines up until the closing ``}''.
-  % Additional authors and addresses can be added with ``\and'',
-  % just like the second author.
-  % To save space, use either the email address or home page, not both
-  % \and
-  % Second Author\\
-  % Institution2\\
-  % First line of institution2 address\\
-  % {\tt\small secondauthor@i2.org}
-  }
+  \title{Sign Language to Text Classification using Convolutional Neural Networks}
+  
   \maketitle
 
 
@@ -67,30 +52,31 @@
   \section{Introduction}
   \label{sec:intro}
 
-Sign language is the most important way for the deaf to communicate. The problem faced is to identify the twenty-six characters of the English alphabet and the white space. The most probable challenges that will be faced will be the correct classification of similar looking alphabets. By using CNN, we are trying to correctly classify the image as a character. For the purpose of diversifying the results we will be using the Mobile-Net-v3, ShuffleNet and ResNet-18 neural network to model three different datasets and then later train two models by making use of Transfer Learning.
+Sign language is the primary form of communication for deaf people. The conversion of sign language to text can prove to be quite helpful to people who do not understand the language\cite{IMP3}. It will make the environment highly inclusive for them to freely present their ideas\cite{IMP2} and will save costs of employing an intermediary for conversations between speakers and non speakers\cite{IMP1}. It will also lead to better documentation, as saving long videos can be quite memory inefficient compared to text. Furthermore, this conversion will provide greater job opportunities to deaf people which were earlier missed due to language barriers. 
 \par
-{\bfseries Application}: The conversion of sign language to text can prove to be quite helpful to not only the deaf people but also to others who do not understand the language. Furthermore, it will save costs of employing an intermediary for conversation between speakers and non speakers. It will also lead to better documentation, as saving long videos can be quite memory inefficient but saving the conversations in the form of text can be quite helpful.
+In this project we will be using Mobile-Net-v3 \cite{MNV3}, ShuffleNet \cite{SN1} and ResNet-18 \cite{RN18} neural networks to model three different datasets and then later train two models by making use of Transfer Learning to classify images as characters. The most probable challenges that will be faced while converting sign language to text are variations in the datasets due to different shapes and sizes of hands of people\cite{C}. There is also the issue insufficient lighting and overall unclear images. Differentiating between similar looking alphabets might also prove to be a difficult task.
 \par
-{\bfseries Goal} : The primary goal of the project is to predict the textual counterpart of a sign language image with high accuracy. In the end we will evaluate the accuracy using confusion matrix by comparing the results for each of the characters.
+{\bfseries Goal} : The primary goal of the project is to study, and analyse the results of applying different CNN models on American Sign Language data-sets. We will utilize transfer learning to use pre-trained models to cut down on training time. Different models will be contrasted based on parameters like accuracy. We will tune the hyper-parameters of one of our models to increase its accuracy. 
 
 
   %------------------------------------------------------------------------
   \section{Image Dataset Selection}
   \label{sec:formatting}
-The American sign language has a diverse range of data across the web. For our usecase, we have selected 3 datasets which are suitable based on the number of classes and how skewed are the datasets and also based on the size of images which would be a factor during preprocessing of this data. The first dataset is provided by NIDCD, which is an gov. institution, this dataset would be trimmed to use only 3 classes out of 29. The second dataset has 28 classes, but the number of images are higher i.e 160k these would be systematically reduced to less 50k using random sampling. The model would be trained for all the classes for the second dataset.
-The third dataset being used is the one provided by the paper \textbf{Spelling It Out}  paper which has about 132k images and 24 classes from 5 different individuals providing variety to the dataset. This dataset shall also be trimmed to less than 50k images divided equally among all the classes.
+The American sign language\cite{ASL} has a diverse range of data across the web. We have selected 3 datasets which are suitable based on the number of classes, skewness and based on the size of images. The first dataset is provided by NIDCD\cite{NIDCD}, this dataset would be trimmed to use only 3 classes out of 29. The second dataset covers the numbers from the sign language and has 11 classes with inclusion of a class with some unrelated images that detects as nothing.
+The third dataset being used is the one provided by the paper, Spelling It Out\cite{SiO} which has about 132k images and 24 classes from 5 different individuals providing variety to the dataset. This dataset shall also be trimmed to less than 30k images divided equally among all the classes using random sampling. Using these datasets would provide a large degree of training data and variety for the CNN architecture and cover multiple use cases for using ASL.
 
   \begin{table}
     \centering
     \begin{tabular}{l l l l}
       \toprule
-      Parameters & Dataset 1 & Dataset 2 & Dataset 3\\
+      Parameters & Dataset 1\cite{D1} & Dataset 2\cite{SLfN} & Dataset 3\cite{D3}\\
       \midrule
-      Classes & 3 & 28 & 24\\
-      Images & 87k & 166k & 132k \\
+      Total Classes & 29 & 11 & 24\\
+      Reduced Classes & 3  & 11 & 24 \\
+      Total Images & 87k & 16.5k & 132k \\
+      Reduced Images & 9k & 16.5k & 30k \\
       Image Size & 200x200  & 400x400 & variable\\
       Format & .jpg & .jpg & .jpg \\
-      Link & \href{https://www.kaggle.com/datasets/grassknoted/asl-alphabet}{Link} & \href{https://www.kaggle.com/datasets/kapillondhe/american-sign-language}{Link} & \href{https://www.kaggle.com/datasets/mrgeislinger/asl-rgb-depth-fingerspelling-spelling-it-out}{Link}\\
       \bottomrule
     \end{tabular}
     \caption{Datasets}
@@ -100,30 +86,40 @@ The third dataset being used is the one provided by the paper \textbf{Spelling I
 
   %-------------------------------------------------------------------------
   \section{Possible Methodology}
-We are planning to work on Google Collab throughout our project and use Github for collaboration and version control our project. We plan to clean and pre-process the raw dataset by removing redundant images and making sure that the dataset is completely balanced.The three architectures that we will be using are: \textbf{Mobile-Net-v3, ShuffleNet, and ResNet-18}. Mobile-Net-v3 is a Convolution Neural Network(CNN) that is said to perform well for mobile devices. We are using Mobile-Net-v3 to reduce the training time of the images significantly since the number of parameters to be trained are low. ShuffleNet is yet another architecture that performs well for mobile devices. One added advantage here is that ShuffleNet has limited computation power without compromising the accuracy ResNet-18 is usually recommended for image classification problems. The architecture has many layers because of which it can accurately represent features, thus increasing its classification powers. We would we using optimization algorithms such as AdaDelta and Adam. Although both the optimization algorithm are computationally expensive, we believe that they will might significantly improve the learning rate of the model. Apart from using optimization algorithms, we would use k cross validation to obtain reliable results and avoid overfitting. To evaluate how well our model performs, we would be using different evaluation metrics such as precision, recall and f1 score.
+We are planning to work on Google Collab throughout our project and use GitHub for collaboration and version control. We plan to clean and pre-process the raw datasets by removing redundant images using Sha1 or MD5 hashes and making sure that the datasets are completely balanced. We will use \cite{TV}torchvision.transform module from PyTorch to further address duplicate images. The images for all the datasets would also be made consistent as part of the pre-processing step. The three CNN architectures that we will be using are: \textbf{Mobile-Net-v3, ShuffleNet, and ResNet-18}. Mobile-Net-v3\cite{MNV3} is a CNN\cite{NNC} that is said to perform well for mobile devices. We are using Mobile-Net-v3 to reduce the training time of the images significantly since the number of parameters to be trained is low. Some added advantages of ShuffleNet\cite{SN1} are limited computation power without compromising accuracy and better performance for mobile devices.\cite{RN18} ResNet-18 is usually recommended for image classification problems. The architecture has eighteen layers which accurately represent features, thus increasing its classification powers. We would be training our CNN using Pytorch. We would be using transfer learning which uses the previous pre-trained model that has learned useful features. This helps to further reduce the training time and better generalize the test data\par We would be using an optimization algorithm\cite{OA} : Adam. Although Adam is computationally expensive, we believe that it will significantly improve the learning rate of the model. The models will be tuned using hyper-parameters such as learning rate(values ranging from 0.1 to 0.01 depending on the architecture), batch size(32, 64, 128), and numbers of epochs(100 and early stopping would be used). To evaluate how well our model performs, we would be using different evaluation metrics such as\cite{M} f1 score, Confusion Matrix, and Receiver operating characteristics((ROC).
 
 \pagebreak
 
   %-------------------------------------------------------------------------
+  \onecolumn
   \section{Gantt Chart}
+    \vspace{1\baselineskip}
 
-  \includegraphics[scale=0.5]{{gantt.jpg}}
-
-\pagebreak
-  %-------------------------------------------------------------------------
-  \section{References}
-
-  List and number all bibliographical references in 9-point Times, single-spaced, at the end of your paper.
-  When referenced in the text, enclose the citation number in square brackets, for
-  example~\cite{Authors14}.
-  Where appropriate, include page numbers and the name(s) of editors of referenced books.
-  When you cite multiple papers at once, please make sure that you cite them in numerical order like this \cite{Alpher01,Alpher02,Alpher03,Alpher04,Alpher05}.
-  If you use the template as advised, this will be taken care of automatically.
-
-
-  
-
-
+  \includegraphics[width=\textwidth, height=10.5cm]{{gantt.jpg}}
+  \vspace{1\baselineskip}
+  \par
+{\bfseries Project baseline:}
+\par
+  We spent three weeks on the project baseline job, concentrating on group formation, dataset selection, and CNN architecture selection.
+\vspace{1\baselineskip}
+\par
+{\bfseries Learning and Research:}
+\par
+  During the research and learning phase, we dedicated a week to project planning and comprehension in addition to the project baseline's dataset selection. All of the concepts that made the shortlist have been discussed and reviewed by the team.
+\par
+  We spent around five weeks learning the essentials from internet resources.
+\vspace{1\baselineskip}
+\par
+{\bfseries Development:}
+\par
+  During the development process, we set up Github. Also, we'll start working on data pre-processing, begin using deep learning principles, and train the finalised models using various datasets. We anticipate having at least one dataset running on each model by the first progress reporting date. By parallelizing the training of models 1, 2, and 3, we will accomplish three milestones.
+  \par
+  The layers that need to be trained explicitly will also be evaluated, along with the characteristics that need to be extracted. The idea of transfer learning will be applied, which will cut down on training time. Finally, models will be adjusted and contrasted. Seven weeks have been set aside for this procedure.
+\vspace{1\baselineskip}
+\par
+{\bfseries Project reporting:}
+\par
+   We have included dates and an estimate of the time needed to produce the project proposal and the final project report under the documentation job.
 
   %%%%%%%%% REFERENCES
   {\small
