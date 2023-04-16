@@ -22,20 +22,17 @@
 - cuda                V11.1
 - shutil              11.0.0
 ## **Instruction on how to train/validate the model**
-- To train or validate the code use the 3 ipynb files mentioned in the first point of Source Code Package.
-- Before running any of those 3 files please change the directory path in cell 4. [Link to cell 4 of UTKFaceipynb file](./Code/UTKFace/AllUTKFace/AllModelsOnUTKFaceDataset.ipynb#cell-4)
-## **Instructions on how to run the pre-trained model on the provided sample test dataset**
-- [Random Test Sample of 100 images from each dataset](https://drive.google.com/file/d/1Lsw0U2c2BQMXjaWgyLWOQG9oaGjfiTPm/view?usp=sharing)
-- Use the [TestSampleOnPreTrainedModel file](./Code/TestSampleOnPreTrainedModel.ipynb) to run the pretrained models.
-## **Source Code Package in PyTorch**
-- There are 3 ipynb files of eaach dataset containing the initial 9 models which can be found here with their saved model files. [Dataset-1 UTKFace](./Code/UTKFace/AllUTKFace/) | [Dataset-2 Adience](./Code/Adience/AdienceAllModels/) | [Dataset-3 Appa-Real](./Code/AppaReal/AllModelsAppa-Real/)
-- The 2 Transfer Learning models can be found here with their respective saved model files. [Transfer Learning Files](./Code/TransferLearning/)
-- Preprocessing steps can be found [here](./Code/Preprocessing/).
-- Dataset Study can be found [here](./Code/DatasetStudy.ipynb).
-- **Note**- Other ipynb files and Saved models which are available in the code are mentioned under the Ablative Study section in results.
+- To train and validate the model, we have created multiple .ipynb files for each dataset and each model. The models are saved in the respective folders.
+- To train the model, change the location of the dataset in the code or link the kaggle account in your .ipynb files. The dataset can be downloaded automatically from the kaggle. Run all the blocks under the training section. The models weigh would be saved in the current directory.
+
+## **Instructions on how to run the test sample on the pretrained model**
+- User can also run the validation models by running the blocks under validation section in the .ipynb files. Dataloader should be preloaded with the test dataset. The validation accuracy, precision, recall and f1 score would be printed and T-SNE plots would be generated.
+
+- [Random Test Sample from each dataset]('./Test Dataset/Random Test Sample from each dataset.png')
+
 ## **Description on how to obtain the Dataset from an available download link**
 ### *Original Dataset Link*
-- [Dataset 1 (Punctuations)](https://www.kaggle.com/datasets/abhikjha/appa-real-face-cropped)
-- [Dataset 2 (Numbers)](https://www.kaggle.com/datasets/jangedoo/utkface-new) 
-- [Dataset 3 (Alphabets)](https://www.kaggle.com/datasets/arcarcarc/adience-dataset-preprocessed)
+- [Dataset 1 (Punctuations)](https://www.kaggle.com/grassknoted/asl-alphabet)
+- [Dataset 2 (Numbers)](https://www.kaggle.com/datasets/muhammadkhalid/sign-language-for-numbers) 
+- [Dataset 3 (Alphabets)](https://www.kaggle.com/datasets/mrgeislinger/asl-rgb-depth-fingerspelling-spelling-it-out)
 
