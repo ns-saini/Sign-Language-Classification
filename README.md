@@ -3,7 +3,7 @@
 
 ## **Team Details**
 1. Nishant Saini (40195801)
-2. Vikram Singh Brahm (40204349)
+2. Vikram Singh Brahm (40241024)
 3. Simran Sohal (40226103)
 4. Shalvi Saxena (40220846)
 
