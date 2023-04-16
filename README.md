@@ -5,7 +5,7 @@
 1. Nishant Saini (40195801)
 2. Vikram Singh Brahm (40204349)
 3. Simran Sohal (40226103)
-4. Shalvi Saxena ()
+4. Shalvi Saxena (40220846)
 
 ## **High level description/presentation of the project**
  - In Canada alone, there more than 357,000 people who're part of the Deaf Community and American Sign Language is the most tool for them for communication. In this study, we approach the problem of recognizing static hand gestures using Convolutional Neural Networks and recognize and help in interpretation of these hand gestures. 
