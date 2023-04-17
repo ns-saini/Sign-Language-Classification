@@ -31,8 +31,10 @@
 - [Random Test Sample from each dataset]('./Test Dataset/Random Test Sample from each dataset.png')
 
 ## **Description on how to obtain the Dataset from an available download link**
-### *Original Dataset Link*
 - [Dataset 1 (Punctuations)](https://www.kaggle.com/grassknoted/asl-alphabet)
 - [Dataset 2 (Numbers)](https://www.kaggle.com/datasets/muhammadkhalid/sign-language-for-numbers) 
 - [Dataset 3 (Alphabets)](https://www.kaggle.com/datasets/mrgeislinger/asl-rgb-depth-fingerspelling-spelling-it-out)
 
+
+### Link to presentation
+- [Presentation](https://drive.google.com/file/d/1vGqgibZ4QIUM7ejvfBvLR5X2ueZ7FxHy/view?usp=sharing)
