@@ -28,8 +28,6 @@
 ## **Instructions on how to run the test sample on the pretrained model**
 - User can also run the validation models by running the blocks under validation section in the .ipynb files. Dataloader should be preloaded with the test dataset. The validation accuracy, precision, recall and f1 score would be printed and T-SNE plots would be generated.
 
-- [Random Test Sample from each dataset]('./Test Dataset/Random Test Sample from each dataset.png')
-
 ## **Description on how to obtain the Dataset from an available download link**
 - [Dataset 1 (Punctuations)](https://www.kaggle.com/grassknoted/asl-alphabet)
 - [Dataset 2 (Numbers)](https://www.kaggle.com/datasets/muhammadkhalid/sign-language-for-numbers) 
